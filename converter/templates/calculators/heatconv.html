@@ -1,0 +1,188 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+
+
+ <script>
+
+	function validate(){
+        input = document.getElementById("heat_value").value;
+        first_value = document.getElementById("heats").value;
+		second_value = document.getElementById("heats2").value;
+
+        if (isNaN(input)){
+            document.getElementById("result").innerHTML = "You have to enter numeric characters. '" + input + "' is not a number!";
+        }
+        else if (first_value == second_value) {
+            document.getElementById("result").innerHTML = "The units you want to convert are same. Please select two different units! ";
+        }
+		else if (first_value == 0 && input<-459.4) {
+            document.getElementById("result").innerHTML = "Fahreneit value cannot be less than '-459.4 °F'.";
+		}
+		else if (first_value == 2 && input<0) {
+            document.getElementById("result").innerHTML = "Kelvin value cannot be less than '0 K'.";
+		}
+		
+		else if (first_value == 1 && input<-273) {
+            document.getElementById("result").innerHTML = "Celcius value cannot be less than '-273 °C'.";
+		}
+        else {
+            takeValue();
+        }
+    }
+
+
+    function writeResult(funcValue){
+        
+        input = document.getElementById("heat_value").value;
+        unit_value = document.getElementById("heats").value;
+        
+        var unit;
+        
+        if ( unit_value == 0) var unit = " °F";
+        else if (unit_value == 1) var unit = " °C";
+        else if (unit_value == 2) var unit = " K";
+        
+        
+        document.getElementById("result").innerHTML = input + unit + " = " + funcValue;
+
+    }
+
+
+	function takeValue(){
+		input_value = document.getElementById("heat_value").value;
+		first_value = document.getElementById("heats").value;
+		second_value = document.getElementById("heats2").value;
+		decision(first_value,second_value,input_value)
+	}
+	
+	
+	
+	function decision(first,second,input){
+		
+		if (first == 0 && second == 1){
+			writeResult(fahrenheitToCelcius(input))
+		}
+		if (first == 0 && second == 2){
+			writeResult(fahrenheitToKelvin(input))
+		}
+		if (first == 1 && second == 2){
+			writeResult(celciusToKelvin(input))
+		}
+		if (first == 2 && second == 1){
+			writeResult(kelvinToCelcius(input))
+		}
+		if (first == 1 && second == 0){
+			writeResult(celciusToFahrenheit(input))
+		}
+		if (first == 2 && second == 0){
+			writeResult(kelvinToFahrenheit(input))
+		}
+	}
+
+
+	function celciusToFahrenheit(celcius){
+		sonuc_CtoF = ((celcius * 9) / 5) + 32;
+    	return sonuc_CtoF+ " °F";
+	}
+    
+
+	function celciusToKelvin(celcius){
+		sonuc_CtoK = celcius + 273;
+		return sonuc_CtoK+ " K";
+		}
+		
+
+	function fahrenheitToCelcius(fahrenheit){
+		sonuc_FtoC = ((fahrenheit - 32) * 5) / 9;
+		return sonuc_FtoC+ " °C";
+		}
+		
+
+	function fahrenheitToKelvin(fahrenheit){
+		sonuc_FtoK = (((fahrenheit - 32) * 5) / 9) + 273;
+		return sonuc_FtoK+ " K";
+		}
+		
+
+	function kelvinToFahrenheit(kelvin){
+		sonuc_KtoF = (((kelvin - 273) * 9) / 5) + 32;
+		return sonuc_KtoF+ " °F";
+		}
+		
+
+	function kelvinToCelcius(kelvin){
+		sonuc_KtoC = (kelvin - 273);
+		return sonuc_KtoC+ " °C";
+		}
+		
+</script>
+
+
+<title>Temperature Converter</title>
+<div style="margin-top:100px;"></div>
+
+<div class="jumbotron jumbotron-fluid text-light mb-0" style="background-color:#50af64">
+    <div class="container">
+        <h1 class="display-4">The Temperature Unit Converter is on your service! </h1>
+        <p class="lead">You can choose any of the offered units and convert to each other of the same type you want.</p>
+    </div>
+</div>
+<div class="container">
+    
+    
+    
+    
+    <div class="jumbotron jumbotron-fluid rounded" style="border: solid 1px black;">
+
+        
+            
+        <div id="cevirForm">	
+            <div class="input-group input-group-lg w-50 m-auto">
+                
+                <div class="input-group-prepend">
+                    <select id="heats">
+                        <option value="0">Fahreneit</option>
+                        <option value="1">Celcius</option>
+                        <option value="2">Kelvin</option>
+                        
+                    </select>
+                </div>
+                
+                    <input type="text" id="heat_value" class="form-control isvalid" aria-label="Large" aria-describedby="inputGroup-sizing-sm" required>
+                
+                <div class="input-group-append">
+                    <span class="input-group-text" id="inputGroup-sizing-lg">to :</span>
+                
+                    <div class="input-group-append">
+                        <select id="heats2">
+                            <option value="0">Fahreneit</option>
+							<option value="1">Celcius</option>
+							<option value="2">Kelvin</option>
+                        </select>	
+                    </div>
+                    
+                    <div class="input-group-append">
+                        <input type="button" id="inputGroup-sizing-lg" onclick="validate()" value="Convert!">
+                    </div>
+                        
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="row mt-5 ">
+           <div class="w-50 m-auto text-center">
+                <h3 id="result"></h3>
+           </div>
+        </div>
+    
+    </div>
+
+
+
+
+</div>
+
+
+{% endblock %}

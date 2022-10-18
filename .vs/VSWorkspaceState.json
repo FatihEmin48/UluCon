@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\converter",
+    "\\converter\\pages",
+    "\\converter\\static",
+    "\\converter\\static\\json",
+    "\\converter\\templates",
+    "\\converter\\templates\\calculators",
+    "\\converter\\templates\\converters",
+    "\\converter\\templates\\pages",
+    "\\converter\\templates\\partials"
+  ],
+  "PreviewInSolutionExplorer": false
+}

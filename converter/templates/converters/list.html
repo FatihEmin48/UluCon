@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+
+<title>Converters</title>
+<div style="margin-top:100px;"></div>
+
+
+<div class="jumbotron jumbotron-fluid shadow">
+    <div class="container">
+        <h1 class="display-4">The Converters are at your service! </h1>
+        <p class="lead">Exchange, length, capacity etc. converters...</p>
+    </div>
+</div>
+<div style="margin-top:20px;"></div>
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-12 d-flex justify-content-around flex-wrap">
+
+                {% if converters %}
+                    
+                    {% for converter in converters %}
+                        <div class="card shadow p-3 rounded mb-5" style=" width: 20rem;">
+                            <img class="card-img-top shadow-sm rounded" src="{% static converter.get_image_path %}" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{converter.name}}</h5>
+                                <p class="card-text">{{converter.description}}</p>
+                                <a href="{{converter.link}}" class="btn btn-success">Convert Now</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                {% else %}
+                
+                    <div class="alert alert-warning">
+                        <p>No converter added yet :(</p>
+                    </div>
+
+                {% endif %}
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

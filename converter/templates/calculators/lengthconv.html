@@ -1,0 +1,677 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+
+<script>
+
+    function validate(){
+        input = document.getElementById("length_value").value;
+        first_value = document.getElementById("lengths").value;
+		second_value = document.getElementById("lengths2").value;
+
+        if (isNaN(input)){
+            document.getElementById("result").innerHTML = "You have to enter numeric characters. '" + input + "' is not a number!";
+        }
+        else if (first_value == second_value) {
+            document.getElementById("result").innerHTML = "The units you want to convert are same. Please select two different units! ";
+        }
+        else if (input == 0) {
+            document.getElementById("result").innerHTML = "Please enter a value different from 0. ";
+        }
+        else {
+            takeValue();
+        }
+    }
+
+
+    function writeResult(funcValue){
+        
+        input = document.getElementById("length_value").value;
+        unit_value = document.getElementById("lengths").value;
+        
+        var unit;
+        
+        if ( unit_value == 0) var unit = " mm";
+        else if (unit_value == 1) var unit = " cm";
+        else if (unit_value == 2) var unit = " dm";
+        else if (unit_value == 3) var unit = " m";
+        else if (unit_value == 4) var unit = " dam";
+        else if (unit_value == 5) var unit = " hm";
+        else if (unit_value == 6) var unit = " km";
+        else if (unit_value == 7) var unit = " inc";
+        
+
+        
+        document.getElementById("result").innerHTML = input + unit + " = " + funcValue;
+
+    }
+
+
+    function takeValue(){
+		input_value = document.getElementById("length_value").value;
+		first_value = document.getElementById("lengths").value;
+		second_value = document.getElementById("lengths2").value;
+		decision(first_value,second_value,input_value);
+	}
+
+
+    function decision(first,second,input){
+		
+        if (first == 0 && second == 1){
+            writeResult(mmToCentimetre(input));
+        }
+            
+        if (first == 0 && second == 2){
+            writeResult(mmToDecimetre(input));
+        }
+            
+        if (first == 0 && second == 3){
+            writeResult(mmToMetre(input));
+        }
+            
+        if (first == 0 && second == 4){
+            writeResult(mmToDecametre(input));
+        }
+            
+        if (first == 0 && second == 5){
+            writeResult(mmToHectometre(input));
+        }
+            
+        if (first == 0 && second == 6){
+            writeResult(mmToKilometre(input));
+        }
+            
+        if (first == 0 && second == 7){
+            writeResult(mmToInc(input));
+        }
+            
+            
+            
+        if (first == 1 && second == 0){
+            writeResult(cmToMilimetre(input));}
+            
+        if (first == 1 && second == 2){
+            writeResult(cmToDecimetre(input));}
+            
+        if (first == 1 && second == 3){
+            writeResult(cmToMetre(input));}
+            
+        if (first == 1 && second == 4){
+            writeResult(cmToDecametre(input));}
+            
+        if (first == 1 && second == 5){
+            writeResult(cmToHectometre(input));}
+            
+        if (first == 1 && second == 6){
+            writeResult(cmToKilometre(input));}
+            
+        if (first == 1 && second == 7){
+            writeResult(cmToInc(input));}
+            
+            
+    
+            
+        if (first == 2 && second == 0){
+            writeResult(dcToMilimetre(input));}
+    
+        if (first == 2 && second == 1){
+            writeResult(dcToCentimetre(input));}
+    
+        if (first == 2 && second == 3){
+            writeResult(dcToMetre(input));}
+    
+        if (first == 2 && second == 4){
+            writeResult(dcToDecametre(input));}
+    
+        if (first == 2 && second == 5){
+            writeResult(dcToHectometre(input));}
+    
+        if (first == 2 && second == 6){
+            writeResult(dcToKilometre(input));}
+    
+        if (first == 2 && second == 7){
+            writeResult(dcToInc(input));}
+    
+    
+    
+        if (first == 3 && second == 0){
+            writeResult(mToMilimetre(input));}
+    
+        if (first == 3 && second == 1){
+            writeResult(mToCentimetre(input));}
+    
+        if (first == 3 && second == 2){
+            writeResult(mToDecimetre(input));}
+    
+        if (first == 3 && second == 4){
+            writeResult(mToDecametre(input));}
+    
+        if (first == 3 && second == 5){
+            writeResult(mToHectometre(input));}
+    
+        if (first == 3 && second == 6){
+            writeResult(mToKilometre(input));}
+    
+        if (first == 3 && second == 7){
+            writeResult(mToInc(input));}
+    
+    
+    
+        if (first == 4 && second == 0){
+            writeResult(decToMilimetre(input));}
+    
+        if (first == 4 && second == 1){
+            writeResult(decToCentimetre(input));}
+    
+        if (first == 4 && second == 2){
+            writeResult(decToDecimetre(input));}
+    
+        if (first == 4 && second == 3){
+            writeResult(decToMetre(input));}
+    
+        if (first == 4 && second == 5){
+            writeResult(decToHectometre(input));}
+    
+        if (first == 4 && second == 6){
+            writeResult(decToKilometre(input));}
+    
+        if (first == 4 && second == 7){
+            writeResult(decToInc(input));}
+    
+    
+    
+        if (first == 5 && second == 0){
+            writeResult(hmToMilimetre(input));}
+    
+        if (first == 5 && second == 1){
+            writeResult(hmToCentimetre(input));}
+    
+        if (first == 5 && second == 2){
+            writeResult(hmToDecimetre(input));}
+    
+        if (first == 5 && second == 3){
+            writeResult(hmToMetre(input));}
+    
+        if (first == 5 && second == 4){
+            writeResult(hmToDecametre(input));}
+    
+        if (first == 5 && second == 6){
+            writeResult(hmToKilometre(input));}
+    
+        if (first == 5 && second == 7){
+            writeResult(hmToInc(input));}
+    
+    
+    
+        
+        if (first == 6 && second == 0){
+            writeResult(kmToMilimetre(input));}
+    
+        if (first == 6 && second == 1){
+            writeResult(kmToCentimetre(input));}
+    
+        if (first == 6 && second == 2){
+            writeResult(kmToDecimetre(input));}
+    
+        if (first == 6 && second == 3){
+            writeResult(kmToMetre(input));}
+    
+        if (first == 6 && second == 4){
+            writeResult(kmToDecametre(input));}
+    
+        if (first == 6 && second == 5){
+            writeResult(kmToHectometre(input));}
+    
+        if (first == 6 && second == 7){
+            writeResult(kmToInc(input));}
+    
+    
+    
+        if (first == 7 && second == 0){
+            writeResult(ıncToMilimetre(input));}
+    
+        if (first == 7 && second == 1){
+            writeResult(ıncToCentimetre(input));}
+    
+        if (first == 7 && second == 2){
+            writeResult(ıncToDecimetre(input));}
+    
+        if (first == 7 && second == 3){
+            writeResult(ıncToMetre(input));}
+    
+        if (first == 7 && second == 4){
+            writeResult(ıncToDecametre(input));}
+    
+        if (first == 7 && second == 5){
+            writeResult(ıncToHectometre(input));}
+    
+        if (first == 7 && second == 6){
+            writeResult(ıncToKilometre(input));}
+		
+    }
+    
+    
+    function mmToCentimetre(milimetre){
+        sonuc_mmToCentimetre = (milimetre/10);
+        return sonuc_mmToCentimetre + " cm";
+    }
+    
+
+    function mmToDecimetre(milimetre){
+        sonuc_mmToDecimetre = (milimetre/100);
+        return sonuc_mmToDecimetre + " dm";
+        }
+        
+
+    function mmToMetre(milimetre){
+        sonuc_mmToMetre = (milimetre/1000);
+        return sonuc_mmToMetre + " m";
+        }
+        
+
+    function mmToDecametre(milimetre){
+        sonuc_mmToDecametre = (milimetre/10000);
+        return sonuc_mmToDecametre + " dam";
+        }
+        
+
+    function mmToHectometre(milimetre){
+        sonuc_mmToDecametre = (milimetre/100000);
+        return sonuc_mmToDecametre + " hm";
+        }
+        
+
+    function mmToKilometre(milimetre){
+        sonuc_mmToKilometre = (milimetre/1000000);
+        return sonuc_mmToKilometre + " km";
+        }
+        
+
+    function mmToInc(milimetre){
+        sonuc_mmToInc = (milimetre*0.03937);
+        return sonuc_mmToInc + " inc";
+        }
+        
+
+
+    
+    function cmToMilimetre(centimetre){
+        sonuc_cmToMilimetre = (centimetre*10);
+        return sonuc_cmToMilimetre + " mm";
+        }
+        
+
+    function cmToDecimetre(centimetre){
+        sonuc_cmToDecimetre = (centimetre/10);
+        return sonuc_cmToDecimetre + " dm";
+        }
+        
+
+    function cmToMetre(centimetre){
+        sonuc_cmToMetre = (centimetre/100);
+        return sonuc_cmToMetre + " m";
+        }
+        
+
+    function cmToDecametre(centimetre){
+        sonuc_cmToDecametre = (centimetre/1000);
+        return sonuc_cmToDecametre + " dam";
+        }
+        
+
+    function cmToHectometre(centimetre){
+        sonuc_cmToHectometre = (centimetre/10000);
+        return sonuc_cmToHectometre + " hm";
+        }
+        
+
+    function cmToKilometre(centimetre){
+        sonuc_cmToKilometre = (centimetre/100000);
+        return sonuc_cmToKilometre + " km";
+        }
+        
+
+    function cmToInc(centimetre){
+        sonuc_cmToInc = (centimetre*0.3937);
+        return sonuc_cmToInc + " inc";
+        }
+        
+
+    function dcToMilimetre(decimetre){
+        sonuc_dcToMilimetre = (decimetre*100);
+        return sonuc_dcToMilimetre + " mm";
+        }
+        
+
+    function dcToCentimetre(decimetre){
+        sonuc_dcToCentimetre = (decimetre*10);
+        return sonuc_dcToCentimetre + " cm";
+        }
+        
+
+    function dcToMetre(decimetre){
+        sonuc_dcToMetre = (decimetre/10);
+        return  sonuc_dcToMetre + " m";
+        }
+        
+
+    function dcToDecametre(decimetre){
+        sonuc_dcToDecametre = (decimetre/100);
+        return sonuc_dcToDecametre + " dam";;
+        }
+        
+
+    function dcToHectometre(decimetre){
+        sonuc_dcToHectometre = (decimetre/1000);
+        return sonuc_dcToHectometre + " hm";
+        }
+        
+
+    function dcToKilometre(decimetre){
+        sonuc_dcToKilometre = (decimetre/10000);
+        return sonuc_dcToKilometre + " km";
+        }
+        
+
+    function dcToInc(decimetre){
+        sonuc_dcToInc = (decimetre*3.937);
+        return sonuc_dcToInc + " inc";
+        }
+        
+
+
+    function mToMilimetre(metre){
+        sonuc_mToMilimetre = (metre*1000);
+        return sonuc_mToMilimetre + " mm";
+        }
+        
+
+    function mToCentimetre(metre){
+        sonuc_mToCentimetre = (metre*100);
+        return sonuc_mToCentimetre + " cm";
+        }
+        
+
+    function mToDecimetre(metre){
+        sonuc_mToDecimetre = (metre*10);
+        return sonuc_mToDecimetre + " dm";
+        }
+        
+
+    function mToDecametre(metre){
+        sonuc_mToDecametre = (metre/10);
+        return sonuc_mToDecametre + " dam";
+        }
+        
+
+    function mToHectometre(metre){
+        sonuc_mToHectometre = (metre/100);
+        return sonuc_mToHectometre + " hm";
+        }
+        
+
+    function mToKilometre(metre){
+        sonuc_mToKilometre = (metre/1000);
+        return sonuc_mToKilometre + " km";
+        }
+        
+
+    function mToInc(metre){
+        sonuc_mToInc = (metre*39.37);
+        return sonuc_mToInc + " inc";
+        }
+        
+
+
+    
+    function decToMilimetre(decametre){
+        sonuc_decToMilimetre = (decametre*10000);
+        return sonuc_decToMilimetre + " mm";
+        }
+        
+
+    function decToCentimetre(decametre){
+        sonuc_decToCentimetre = (decametre*1000);
+        return sonuc_decToCentimetre + " cm";
+        }
+        
+
+    function decToDecimetre(decametre){
+        sonuc_decToDecimetre = (decametre*100);
+        return sonuc_decToDecimetre + " dm";
+        }
+        
+
+    function decToMetre(decametre){
+        sonuc_decToMetre = (decametre*10);
+        return sonuc_decToMetre + " m";
+        }
+        
+
+    function decToHectometre(decametre){
+        sonuc_decToHectometre = (decametre/10);
+        return sonuc_decToHectometre + " hm";
+        }
+        
+
+    function decToKilometre(decametre){
+        sonuc_decToKilometre = (decametre/100);
+        return sonuc_decToKilometre + " km";
+        }
+        
+
+    function decToInc(decametre){
+        sonuc_decToInc = (decametre*393.7);
+        return sonuc_decToInc + " inc";
+        }
+        
+
+
+
+    
+    function hecToMilimetre(hectometre){
+        sonuc_hecToMilimetre = (hectometre*100000);
+        return sonuc_hecToMilimetre + " mm";
+        }
+        
+
+    function hecToCentimetre(hectometre){
+        sonuc_hecToCentimetre = (hectometre*10000);
+        return sonuc_hecToCentimetre + " cm";
+    }
+        
+    function hecToDecimetre(hectometre){
+        sonuc_hecToDecimetre = (hectometre*1000);
+        return sonuc_hecToDecimetre + " dm";
+        }
+        
+
+    function hecToMetre(hectometre){
+        sonuc_hecToMetre = (hectometre*100);
+        return sonuc_hecToMetre + " m";
+        }
+        
+
+    function hecToDecametre(hectometre){
+        sonuc_hecToDecametre = (hectometre*10);
+        return sonuc_hecToDecametre + " dam";
+        }
+        
+
+    function hecToKilometre(hectometre){
+        sonuc_hecToKilometre = (hectometre/10);
+        return sonuc_hecToKilometre + " km";
+        }
+        
+
+    function hecToInc(hectometre){
+        sonuc_hecToInc = (hectometre*3937);
+        return sonuc_hecToInc + " inc";
+        }
+        
+    
+    function kmToMilimetre(kilometre){
+        sonuc_kmToMilimetre = (kilometre*1000000);
+        return sonuc_kmToMilimetre + " mm";
+        }
+        
+
+    function kmToCentimetre(kilometre){
+        sonuc_kmToCentimetre = (kilometre*100000);
+        return sonuc_kmToCentimetre + " cm";
+        }
+        
+
+    function kmToDecimetre(kilometre){
+        sonuc_kmToDecimetre = (kilometre*10000);
+        return sonuc_kmToDecimetre + " dm";
+        }
+        
+
+    function kmToMetre(kilometre){
+        sonuc_kmToMetre = (kilometre*1000);
+        return sonuc_kmToMetre + " m";
+        }
+        
+
+    function kmToDecametre(kilometre){
+        sonuc_kmToDecametre = (kilometre*100);
+        return sonuc_kmToDecametre + " dam";
+        }
+        
+
+    function kmToHectometre(kilometre){
+        sonuc_kmToHectometre = (kilometre*10);
+        return sonuc_kmToHectometre + " hm";
+        }
+        
+
+    function kmToInc(kilometre){
+        sonuc_kmToInc = (kilometre*39370);
+        return sonuc_kmToInc + " inc";
+        }
+        
+
+    function ıncToMilimetre(ınc){
+        sonucıncToMilimetre = (ınc*25.4);
+        return sonucıncToMilimetre + " mm";
+        }
+        
+
+    function ıncToCentimetre(ınc){
+        sonucıncToCentimetre = (ınc*2.54);
+        return sonucıncToCentimetre + " cm";
+        }
+        
+
+    function ıncToDecimetre(ınc){
+        sonucıncToDecimetre = (ınc*0.254);
+        return sonucıncToDecimetre + " dm";
+        }
+        
+
+    function ıncToMetre(ınc){
+        sonucıncToMetre = (ınc*0.0254);
+        return sonucıncToMetre + " m";
+        }
+        
+
+    function ıncToDecametre(ınc){
+        sonucıncToDecametre = (ınc*0.00254);
+        return sonucıncToDecametre + " dam";
+        }
+        
+
+    function ıncToHectometre(ınc){
+        sonucıncToHectometre = (ınc*0.000254);
+        return sonucıncToHectometre + " hm";
+        }
+        
+
+    function ıncToKilometre(ınc){
+        sonucınc_ToKilometre = (ınc*0.0000254);
+        return sonuc_ıncToKilometre + " km";
+        }
+        
+
+
+    
+    
+</script>
+
+<title>Length Converter</title>
+<div style="margin-top:100px;"></div>
+
+<div class="jumbotron jumbotron-fluid text-light mb-0" style="background-color:#50af64">
+    <div class="container">
+        <h1 class="display-4">The Length Unit Converter is on your service! </h1>
+        <p class="lead">You can choose any of the offered units and convert to each other of the same type you want.</p>
+    </div>
+</div>
+
+
+<div class="container">
+    
+    
+    
+    
+    <div class="jumbotron jumbotron-fluid rounded" style="border: solid 1px black;">
+
+        
+            
+        <div id="cevirForm">	
+            <div class="input-group input-group-lg w-50 m-auto">
+                
+                <div class="input-group-prepend">
+                    <select id="lengths">
+                        <option value="0">Milimeter</option>
+                        <option value="1">Centimeter</option>
+                        <option value="2">Decimeter</option>
+                        <option value="3">Meter</option>
+                        <option value="4">Decameter</option>
+                        <option value="5">Hectometer</option>
+                        <option value="6">Kilometer</option>
+                        <option value="7">Inc</option>
+                    </select>
+                </div>
+                
+                    <input type="text" id="length_value" class="form-control isvalid" aria-label="Large" aria-describedby="inputGroup-sizing-sm" required>
+                
+                <div class="input-group-append">
+                    <span class="input-group-text" id="inputGroup-sizing-lg">to :</span>
+                
+                    <div class="input-group-append">
+                        <select id="lengths2">
+                            <option value="0">Milimeter</option>
+                            <option value="1">Centimeter</option>
+                            <option value="2">Decimeter</option>
+                            <option value="3">Meter</option>
+                            <option value="4">Decameter</option>
+                            <option value="5">Hectometer</option>
+                            <option value="6">Kilometer</option>
+                            <option value="7">Inc</option>
+                        </select>	
+                    </div>
+                    
+                    <div class="input-group-append">
+                        <input type="button" id="inputGroup-sizing-lg" onclick="validate()" value="Convert!">
+                    </div>
+                        
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="row mt-5 ">
+           <div class="w-50 m-auto text-center">
+                <h3 id="result"></h3>
+           </div>
+        </div>
+    
+    </div>
+
+
+
+
+</div>
+{% endblock %}

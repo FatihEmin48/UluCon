@@ -1,0 +1,101 @@
+[
+       {
+              "name": "USD-American Dollar",
+              "buyPrice": 8.5177,
+              "sellPrice": 8.525,
+              "change": "%0,39",
+              "updateTime": "21:27",
+              "changeValue": 0.39,
+              "oldBuyPrice": null
+       },
+       {
+              "name": "EUR-Euro",
+              "buyPrice": 10.4213,
+              "sellPrice": 10.4341,
+              "change": "%0,45",
+              "updateTime": "21:27",
+              "changeValue": 0.45,
+              "oldBuyPrice": null
+       },
+       {
+              "name": "GBP-Pound",
+              "buyPrice": 12.0287,
+              "sellPrice": 12.089,
+              "change": "%-0,05",
+              "updateTime": "21:12",
+              "changeValue": -0.05,
+              "oldBuyPrice": null
+       },
+       {
+              "name": "CAD-Canadian Dollar",
+              "buyPrice": 7.0404,
+              "sellPrice": 7.0828,
+              "change": "%0,42",
+              "updateTime": "21:12",
+              "changeValue": 0.42,
+              "oldBuyPrice": null
+       },
+       {
+              "name": "CHF-Swiss Frank",
+              "buyPrice": 9.4686,
+              "sellPrice": 9.5257,
+              "change": "%0,63",
+              "updateTime": "21:12",
+              "changeValue": 0.63,
+              "oldBuyPrice": null
+       },
+       {
+              "name": "SAR-Saudi Arabian Rial",
+              "buyPrice": 2.2653,
+              "sellPrice": 2.2767,
+              "change": "%0,34",
+              "updateTime": "21:12",
+              "changeValue": 0.34,
+              "oldBuyPrice": null
+       },
+       {
+              "name": "JPY-Japanese Yen",
+              "buyPrice": 7.7583,
+              "sellPrice": 7.8051,
+              "change": "%0,52",
+              "updateTime": "21:12",
+              "changeValue": 0.52,
+              "oldBuyPrice": null
+       },
+       {
+              "name": "AUD-Australian Dollar",
+              "buyPrice": 6.5944,
+              "sellPrice": 6.6275,
+              "change": "%0,72",
+              "updateTime": "21:12",
+              "changeValue": 0.72,
+              "oldBuyPrice": null
+       },
+       {
+              "name": "NOK-Norwegian Crown",
+              "buyPrice": 1.0213,
+              "sellPrice": 1.0274,
+              "change": "%0,51",
+              "updateTime": "21:12",
+              "changeValue": 0.51,
+              "oldBuyPrice": null
+       },
+       {
+              "name": "DKK-Danish Crown",
+              "buyPrice": 1.3961,
+              "sellPrice": 1.4046,
+              "change": "%0,40",
+              "updateTime": "21:12",
+              "changeValue": 0.4,
+              "oldBuyPrice": null
+       },
+       {
+              "name": "SEK-Swedish Crown",
+              "buyPrice": 1.0278,
+              "sellPrice": 1.034,
+              "change": "%0,83",
+              "updateTime": "21:12",
+              "changeValue": 0.83,
+              "oldBuyPrice": null
+       }
+]

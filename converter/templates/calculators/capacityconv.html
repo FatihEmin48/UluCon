@@ -1,0 +1,579 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+
+<script>
+
+    function validate(){
+        input = document.getElementById("capacity_value").value;
+        first_value = document.getElementById("capacities").value;
+		second_value = document.getElementById("capacities2").value;
+
+        if (isNaN(input)){
+            document.getElementById("result").innerHTML = "You have to enter numeric characters. '" + input + "' is not a number!";
+        }
+        else if (first_value == second_value) {
+            document.getElementById("result").innerHTML = "The units you want to convert are same. Please select two different units! ";
+        }
+        else if (input == 0) {
+            document.getElementById("result").innerHTML = "Enter a non-zero value. ";
+        }
+        else {
+            takeValue();
+        }
+
+        
+
+    }
+
+	
+    function writeResult(funcValue){
+        
+        input = document.getElementById("capacity_value").value;
+        unit_value = document.getElementById("capacities").value;
+        
+        var unit;
+        
+        if ( unit_value == 0) var unit = " mm³";
+        else if (unit_value == 1) var unit = " cm³";
+        else if (unit_value == 2) var unit = " dm³";
+        else if (unit_value == 3) var unit = " m³";
+        else if (unit_value == 4) var unit = " dam³";
+        else if (unit_value == 5) var unit = " km³";
+        else if (unit_value == 6) var unit = " L";
+        
+
+        
+        document.getElementById("result").innerHTML = input + unit + " = " + funcValue;
+
+    }
+
+    function takeValue(){
+		input_value = document.getElementById("capacity_value").value;
+		first_value = document.getElementById("capacities").value;
+		second_value = document.getElementById("capacities2").value;
+		decision(first_value,second_value,input_value);
+	}
+	
+    function decision(first,second,input){
+        
+        if (first == 0 && second == 1) {
+            writeResult(mmToCentimetreküp(input));
+        }
+
+        if (first == 0 && second == 2) {
+            writeResult(mmToDecimetreküp(input));
+        }
+
+        if (first == 0 && second == 3) {
+            writeResult(mmToMetreküp(input));
+        }
+
+        if (first == 0 && second == 4) {
+            writeResult(mmToDecametreküp(input));
+        }
+
+        if (first == 0 && second == 5) {
+            writeResult(mmToKilometreküp(input));
+        }
+
+        if (first == 0 && second == 6) {
+            writeResult(mmToLitre(input));
+        }
+
+
+
+
+
+        if (first == 1 && second == 0) {
+            writeResult(cmToMilimetreküp(input));
+        }
+
+        if (first == 1 && second == 2) {
+            writeResult(cmToDecimetreküp(input));
+        }
+
+        if (first == 1 && second == 3) {
+            writeResult(cmToMetreküp(input));
+        }
+
+        if (first == 1 && second == 4) {
+            writeResult(cmToDecametreküp(input));
+        }
+
+        if (first == 1 && second == 5) {
+            writeResult(cmToKilometreküp(input));
+        }
+
+        if (first == 1 && second == 6) {
+            writeResult(cmToLitre(input));
+        }
+
+
+
+
+        if (first == 2 && second == 0) {
+            writeResult(dcToMilimetreküp(input));
+        }
+
+        if (first == 2 && second == 1) {
+            writeResult(dcToCentimetreküp(input));
+        }
+
+        if (first == 2 && second == 3) {
+            writeResult(dcToMetreküp(input));
+        }
+
+        if (first == 2 && second == 4) {
+            writeResult(dcToDecametreküp(input));
+        }
+
+        if (first == 2 && second == 5) {
+            writeResult(dcToKilometreküp(input));
+        }
+
+        if (first == 2 && second == 6) {
+            writeResult(dcToLitre(input));
+        }
+
+
+
+
+        if (first == 3 && second == 0) {
+            writeResult(mToMilimetreküp(input));
+        }
+
+        if (first == 3 && second == 1) {
+            writeResult(mToCentimetreküp(input));
+        }
+
+        if (first == 3 && second == 2) {
+            writeResult(mToDecimetreküp(input));
+        }
+
+        if (first == 3 && second == 4) {
+            writeResult(mToDecametreküp(input));
+        }
+
+        if (first == 3 && second == 5) {
+            writeResult(mToKilometreküp(input));
+        }
+
+        if (first == 3 && second == 6) {
+            writeResult(mToLitre(input));
+        }
+
+
+
+        if (first == 4 && second == 0) {
+            writeResult(decToMilimetreküp(input));
+        }
+
+        if (first == 4 && second == 1) {
+            writeResult(decToCentimetreküp(input));
+        }
+
+        if (first == 4 && second == 2) {
+            writeResult(decToDecimetreküp(input));
+        }
+
+        if (first == 4 && second == 3) {
+            writeResult(decToMetreküp(input));
+        }
+
+        if (first == 4 && second == 5) {
+            writeResult(decToKilometreküp(input));
+        }
+
+        if (first == 4 && second == 6) {
+            writeResult(decToLitre(input));
+        }
+
+
+
+
+        if (first == 5 && second == 0) {
+            writeResult(kmToMilimetreküp(input))
+        }
+
+        if (first == 5 && second == 1) {
+            writeResult(kmToCentimetreküp(input));
+        }
+
+        if (first == 5 && second == 2) {
+            writeResult(kmToDecimetreküp(input));
+        }
+
+        if (first == 5 && second == 3) {
+            writeResult(kmToMetreküp(input));
+        }
+
+        if (first == 5 && second == 4) {
+            writeResult(kmToDecametreküp(input));
+        }
+
+        if (first == 5 && second == 6) {
+            writeResult(kmToLitre(input));
+        }
+
+
+
+
+
+        if (first == 6 && second == 0) {
+            writeResult(lToMilimetreküp(input));
+        }
+
+        if (first == 6 && second == 1) {
+            writeResult(lToCentimetreküp(input));
+        }
+
+        if (first == 6 && second == 2) {
+            writeResult(lToDecimetreküp(input));
+        }
+
+        if (first == 6 && second == 3) {
+            writeResult(lToMetreküp(input));
+        }
+
+        if (first == 6 && second == 4) {
+            writeResult(lToDecametreküp(input));
+        }
+
+        if (first == 6 && second == 5) {
+            writeResult(lToKilometreküp(input));
+        }
+    }    
+
+
+        function mmToCentimetreküp(milimetreküp) {
+            sonuc_mmToCentimetreküp = (milimetreküp / 1000);
+            return sonuc_mmToCentimetreküp + " cm³";
+        }
+
+        function mmToDecimetreküp(milimetreküp) {
+            sonuc_mmToDecimetreküp = (milimetreküp / 1000000);
+            return sonuc_mmToDecimetreküp + " dm³";
+        }
+
+        function mmToMetreküp(milimetreküp) {
+            sonuc_mmToMetreküp = (milimetreküp / 1000000000);
+            return sonuc_mmToMetreküp + " m³";
+        }
+
+        function mmToDecametreküp(milimetreküp) {
+            sonuc_mmToDecametreküp = (milimetreküp / 1000000000000);
+            return sonuc_mmToDecametreküp + " dam³";
+        }
+
+        function mmToKilometreküp(milimetreküp) {
+            sonuc_mmToKilometreküp = (milimetreküp / 1000000000000000000);
+            return sonuc_mmToKilometreküp + " km³";
+        }
+
+        function mmToLitre(milimetreküp) {
+            sonuc_mmToLitre = (milimetreküp / 1000000);
+            return sonuc_mmToLitre + " L";
+        }
+
+
+        function cmToMilimetreküp(centimetreküp) {
+            sonuc_cmToMilimetreküp = (centimetreküp * 1000);
+            return sonuc_cmToMilimetreküp + " mm³";
+        }
+
+        function cmToDecimetreküp(centimetreküp) {
+            sonuc_cmToDecimetreküp = (centimetreküp / 1000);
+            return sonuc_cmToDecimetreküp + " dm³";
+        }
+
+        function cmToMetreküp(centimetreküp) {
+            sonuc_cmToMetreküp = (centimetreküp / 1000000);
+            return sonuc_cmToMetreküp + " m³";
+        }
+
+        function cmToDecametreküp(centimetreküp){
+            sonuc_cmToDecametreküp = (centimetreküp / 1000000000);
+            return sonuc_cmToDecametreküp + " dam³";
+        }
+
+        function cmToKilometreküp(centimetreküp) {
+            sonuc_cmToKilometreküp = (centimetreküp / 1000000000000000);
+            return sonuc_cmToKilometreküp + " km³";
+        }
+
+        function cmToLitre(centimetreküp) {
+            sonuc_cmToLitre = (centimetreküp / 1000);
+            return sonuc_cmToLitre + " L";
+        }
+
+
+
+        function mToMilimetreküp(metreküp) {
+            sonuc_mToMilimetreküp = (metreküp * 1000000000);
+            return sonuc_mToMilimetreküp + " mm³";
+        }
+
+        function mToCentimetreküp(metreküp) {
+            sonuc_mToCentimetreküp = (metreküp * 1000000);
+            return sonuc_mToCentimetreküp + " cm³";
+        }
+
+        function mToDecimetreküp(metreküp) {
+            sonuc_mToDecimetreküp = (metreküp * 1000);
+            return sonuc_mToDecimetreküp + " dm³";
+        }
+
+        function mToDecametreküp(metreküp) {
+            sonuc_mToDecametreküp = (metreküp / 1000);
+            return sonuc_mToDecametreküp + " dam³";
+        }
+
+        function mToKilometreküp(metreküp) {
+            sonuc_mToKilometreküp = (metreküp / 1000000000);
+            return sonuc_mToKilometreküp + " km³";
+        }
+
+        function mToLitre(metreküp) {
+            sonuc_mToLitre = (metreküp * 1000);
+            return sonuc_mToLitre + " L";
+        }
+
+
+
+        function dcToMilimetreküp(decimetreküp) {
+            sonuc_dcToMilimetreküp = (decimetreküp * 1000000);
+            return sonuc_dcToMilimetreküp + " mm³";
+        }
+
+        function dcToCentimetreküp(decimetreküp) {
+            sonuc_dcToCentimetreküp = (decimetreküp * 1000);
+            return sonuc_dcToCentimetreküp + " cm³";
+        }
+
+        function dcToMetreküp(decimetreküp) {
+            sonuc_dcToMetreküp = (decimetreküp / 1000);
+            return sonuc_dcToMetreküp + " m³";
+        }
+
+        function dcToDecametreküp(decimetreküp) {
+            sonuc_dcToDecametreküp = (decimetreküp / 1000000);
+            return sonuc_dcToDecametreküp + " dam³";
+        }
+
+        function dcToKilometreküp(decimetreküp) {
+            sonuc_dcToKilometreküp = (decimetreküp / 1000000000000);
+            return sonuc_dcToKilometreküp + " km³";
+        }
+
+        function dcToLitre(decimetreküp) {
+            sonuc_dcToLitre = (decimetreküp * 1);
+            return sonuc_dcToLitre + " L";
+        }
+
+
+
+        function decToMilimetreküp(decametreküp) {
+            sonuc_decToMilimetreküp = (decametreküp * 1000000000000);
+            return sonuc_decToMilimetreküp + " mm³";
+        }
+
+        function decToCentimetreküp(decametreküp) {
+            sonuc_decToCentimetreküp = (decametreküp * 1000000000);
+            return sonuc_decToCentimetreküp + " cm³";
+        }
+
+        function decToDecimetreküp(decametreküp) {
+            sonuc_decToDecimetreküp = (decametreküp * 1000000);
+            return sonuc_decToDecimetreküp + " dm³";
+        }
+
+        function decToMetreküp(decametreküp) {
+            sonuc_decToMetreküp = (decametreküp * 1000);
+            return sonuc_decToMetreküp + " m³";
+        }
+
+        function decToKilometreküp(decametreküp) {
+            sonuc_decToKilometreküp = (decametreküp / 1000000);
+            return sonuc_decToKilometreküp + " km³";
+        }
+
+        function decToLitre(decametreküp) {
+            sonuc_decToLitre = (decametreküp * 1000000);
+            return sonuc_decToLitre + " L";
+        }
+
+
+        function hmToMilimetreküp(decametreküp) {
+            sonuc_hmToMilimetreküp = (decametreküp * 1000000000000);
+            return sonuc_hmToMilimetreküp + " mm³";
+        }
+
+        function hmToCentimetreküp(hectometreküp) {
+            sonuc_hmToCentimetreküp = (hectometreküp * 1000000000);
+            return sonuc_hmToCentimetreküp + " cm³";
+        }
+
+        function hmToDecimetreküp(hectometreküp) {
+            sonuc_hmToDecimetreküp = (hectometreküp * 1000000);
+            return sonuc_hmToDecimetreküp + " dm³";
+        }
+
+        function hmToMetreküp(hectometreküp) {
+            sonuc_hmToMetreküp = (hectometreküp * 1000);
+            return sonuc_hmToMetreküp + " m³";
+        }
+
+        function hmToDecametreküp(hectometreküp) {
+            sonuc_decToKilometreküp = (hectometreküp / 1000000);
+            return sonuc_decToKilometreküp + " km³";
+        }
+
+        function hmToKilometreküp(hectometreküp) {
+            sonuc_decToKilometreküp = (hectometreküp / 1000000);
+            return sonuc_decToKilometreküp + " km³";
+        }
+
+        function hmToLitre(hectometreküp) {
+            sonuc_decToLitre = (hectometreküp * 1000000);
+            return sonuc_decToLitre + " L";
+        }
+
+
+
+        function kmToMilimetreküp(kilometreküp) {
+            sonuc_kmToMilimetreküp = (kilometreküp * 1000000000000000000);
+            return sonuc_kmToMilimetreküp + " mm³";
+        }
+
+        function kmToCentimetreküp(kilometreküp) {
+            sonuc_kmToCentimetreküp = (kilometreküp * 1000000000000000);
+            return sonuc_kmToCentimetreküp + " cm³";
+        }
+
+        function kmToDecimetreküp(kilometreküp) {
+            sonuc_kmToDecimetreküp = (kilometreküp * 1000000000000);
+            return sonuc_kmToDecimetreküp + " dm³";
+        }
+
+        function kmToMetreküp(kilometreküp) {
+            sonuc_kmToMetreküp = (kilometreküp * 1000000000);
+            return sonuc_kmToMetreküp + " m³";
+        }
+
+        function kmToDecametreküp(kilometreküp) {
+            sonuc_kmToDecametreküp = (kilometreküp * 1000000);
+            return sonuc_kmToDecametreküp + " dam³";
+        }        
+        
+        function kmToLitre(kilometreküp){
+            sonuc_kmToLitre = (kilometreküp/1000000000000);
+            return sonuc_kmToLitre + " L";
+        }
+
+
+
+        function lToMilimetreküp(litre){
+            sonuc_lToMilimetreküp = (litre*1000000);
+            return sonuc_lToMilimetreküp + " mm³";}
+
+        function lToCentimetreküp(litre){
+            sonuc_lToCentimetreküp = (litre*1000);
+            return sonuc_lToCentimetreküp + " cm³";} 
+
+        function lToDecimetreküp(litre){
+            sonuc_lToDecimetreküp = (litre*1);
+            return sonuc_lToDecimetreküp + " dm³";}	
+
+        function lToMetreküp(litre){
+            sonuc_lToMetreküp = (litre/1000);
+            return sonuc_lToMetreküp + " m³";}
+
+        function lToDecametreküp(litre){
+            sonuc_lToDecametreküp = (litre/1000000);
+            return sonuc_lToDecametreküp + " dam³";}
+
+        function lToKilometreküp(litre){
+            sonuc_lToKilometreküp = (litre/1000000000000);
+            return sonuc_lToKilometreküp + " km³";}
+                
+</script>
+
+
+<title>Capacity Converter</title>
+<div style="margin-top:100px;"></div>
+
+<div class="jumbotron jumbotron-fluid text-light mb-0" style="background-color:#50af64" >
+    <div class="container">
+        <h1 class="display-4">The Capacity Unit Converter is on your service! </h1>
+        <p class="lead">You can choose any of the offered units and convert to each other of the same type you want.</p>
+    </div>
+</div>
+
+<div class="container">
+    
+    
+    
+    
+    <div class="jumbotron jumbotron-fluid rounded" style = "border: solid 1px black;">
+
+        
+            
+        <div id="cevirForm">	
+            <div class="input-group input-group-lg w-50 m-auto">
+                
+                <div class="input-group-prepend">
+                    <select id="capacities">
+                        <option value="0">Cubic Milimeter</option>
+                        <option value="1">Cubic Centimeter</option>
+                        <option value="2">Cubic Decimeter</option>
+                        <option value="3">Cubic Meter</option>
+                        <option value="4">Cubic Decameter</option>
+                        <option value="5">Cubic Kilometer</option>
+                        <option value="6">Liter</option>
+                    </select>
+                </div>
+                
+                    <input type="text" id="capacity_value" class="form-control isvalid" aria-label="Large" aria-describedby="inputGroup-sizing-sm" required>
+                
+                <div class="input-group-append">
+                    <span class="input-group-text" id="inputGroup-sizing-lg">to :</span>
+                
+                    <div class="input-group-append">
+                        <select id="capacities2">
+                            <option value="0">Cubic Milimeter</option>
+                            <option value="1">Cubic Centimeter</option>
+                            <option value="2">Cubic Decimeter</option>
+                            <option value="3">Cubic Meter</option>
+                            <option value="4">Cubic Decameter</option>
+                            <option value="5">Cubic Kilometer</option>
+                            <option value="6">Liter</option>
+                        </select>	
+                    </div>
+                    
+                    <div class="input-group-append">
+                        <input type="button" id="inputGroup-sizing-lg" onclick="validate()" value="Convert!">
+                    </div>
+                        
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="row mt-5 ">
+           <div class="w-50 m-auto text-center">
+                <h3 id="result"></h3>
+           </div>
+        </div>
+    
+    </div>
+
+
+
+
+</div>
+
+
+
+{% endblock %}

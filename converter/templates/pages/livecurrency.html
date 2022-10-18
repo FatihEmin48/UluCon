@@ -1,0 +1,326 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+
+<script>
+
+    window.onload = function myLoop(){
+        setTimeout(rJson(),6000);
+    };
+
+    function rJson(){
+              
+      var req = new XMLHttpRequest();
+      req.onreadystatechange = function(){
+                  
+        if(this.readyState == 4 && this.status == 200){
+                                
+          var json_datas = JSON.parse(this.responseText);
+          var countObjects = json_datas.length;
+             
+          document.getElementById("name").innerHTML = json_datas[0].name;
+          document.getElementById("name1").innerHTML = json_datas[1].name;    
+          document.getElementById("name2").innerHTML = json_datas[2].name;    
+          document.getElementById("name3").innerHTML = json_datas[3].name;    
+          document.getElementById("name4").innerHTML = json_datas[4].name;    
+          document.getElementById("name5").innerHTML = json_datas[5].name;    
+          document.getElementById("name6").innerHTML = json_datas[6].name;    
+          document.getElementById("name7").innerHTML = json_datas[7].name;    
+          document.getElementById("name8").innerHTML = json_datas[8].name;    
+          document.getElementById("name9").innerHTML = json_datas[9].name;    
+          document.getElementById("name10").innerHTML = json_datas[10].name;
+
+          document.getElementById("buyPrice").innerHTML = json_datas[0].buyPrice;
+          document.getElementById("buyPrice1").innerHTML = json_datas[1].buyPrice;
+          document.getElementById("buyPrice2").innerHTML = json_datas[2].buyPrice;
+          document.getElementById("buyPrice3").innerHTML = json_datas[3].buyPrice;
+          document.getElementById("buyPrice4").innerHTML = json_datas[4].buyPrice;
+          document.getElementById("buyPrice5").innerHTML = json_datas[5].buyPrice;
+          document.getElementById("buyPrice6").innerHTML = json_datas[6].buyPrice;
+          document.getElementById("buyPrice7").innerHTML = json_datas[7].buyPrice;
+          document.getElementById("buyPrice8").innerHTML = json_datas[8].buyPrice;
+          document.getElementById("buyPrice9").innerHTML = json_datas[9].buyPrice;
+          document.getElementById("buyPrice10").innerHTML = json_datas[10].buyPrice;
+                                
+
+          document.getElementById("sellPrice").innerHTML = json_datas[0].sellPrice;
+          document.getElementById("sellPrice1").innerHTML = json_datas[1].sellPrice;
+          document.getElementById("sellPrice2").innerHTML = json_datas[2].sellPrice;
+          document.getElementById("sellPrice3").innerHTML = json_datas[3].sellPrice;
+          document.getElementById("sellPrice4").innerHTML = json_datas[4].sellPrice;
+          document.getElementById("sellPrice5").innerHTML = json_datas[5].sellPrice;
+          document.getElementById("sellPrice6").innerHTML = json_datas[6].sellPrice;
+          document.getElementById("sellPrice7").innerHTML = json_datas[7].sellPrice;
+          document.getElementById("sellPrice8").innerHTML = json_datas[8].sellPrice;
+          document.getElementById("sellPrice9").innerHTML = json_datas[9].sellPrice;
+          document.getElementById("sellPrice10").innerHTML = json_datas[10].sellPrice;
+
+          document.getElementById("change").innerHTML = json_datas[0].change;
+          document.getElementById("change1").innerHTML = json_datas[1].change;
+          document.getElementById("change2").innerHTML = json_datas[2].change;
+          document.getElementById("change3").innerHTML = json_datas[3].change;
+          document.getElementById("change4").innerHTML = json_datas[4].change;
+          document.getElementById("change5").innerHTML = json_datas[5].change;
+          document.getElementById("change6").innerHTML = json_datas[6].change;
+          document.getElementById("change7").innerHTML = json_datas[7].change;
+          document.getElementById("change8").innerHTML = json_datas[8].change;
+          document.getElementById("change9").innerHTML = json_datas[9].change;
+          document.getElementById("change10").innerHTML = json_datas[10].change;
+
+          var changeV=json_datas[0].changeValue;
+          var changeV1=json_datas[1].changeValue;
+          var changeV2=json_datas[2].changeValue;
+          var changeV3=json_datas[3].changeValue;
+          var changeV4=json_datas[4].changeValue;
+          var changeV5=json_datas[5].changeValue;
+          var changeV6=json_datas[6].changeValue;
+          var changeV7=json_datas[7].changeValue;
+          var changeV8=json_datas[8].changeValue;
+          var changeV9=json_datas[9].changeValue;
+          var changeV10=json_datas[10].changeValue;
+
+          if (changeV < 0){
+            document.getElementById("change").style.color = "red";
+          }
+          else {
+            document.getElementById("change").style.color = "green";
+          }
+
+          if (changeV1 < 0){
+            document.getElementById("change1").style.color = "red";
+          }
+          else {
+            document.getElementById("change1").style.color = "green";
+          }
+
+          if (changeV2 < 0){
+            document.getElementById("change2").style.color = "red";
+          }
+          else {
+            document.getElementById("change2").style.color = "green";
+          }
+
+          if (changeV3 < 0){
+            document.getElementById("change3").style.color = "red";
+          }
+          else {
+            document.getElementById("change3").style.color = "green";
+          }
+
+          if (changeV4 < 0){
+            document.getElementById("change4").style.color = "red";
+          }
+          else {
+            document.getElementById("change4").style.color = "green";
+          }
+
+          if (changeV5 < 0){
+            document.getElementById("change5").style.color = "red";
+          }
+          else {
+            document.getElementById("change5").style.color = "green";
+          }
+
+          if (changeV6 < 0){
+            document.getElementById("change6").style.color = "red";
+          }
+          else {
+            document.getElementById("change6").style.color = "green";
+          }
+
+          if (changeV7 < 0){
+            document.getElementById("change7").style.color = "red";
+          }
+          else {
+            document.getElementById("change7").style.color = "green";
+          }
+
+          if (changeV8 < 0){
+            document.getElementById("change8").style.color = "red";
+          }
+          else {
+            document.getElementById("change8").style.color = "green";
+          }
+
+          if (changeV9 < 0){
+            document.getElementById("change9").style.color = "red";
+          }
+          else {
+            document.getElementById("change9").style.color = "green";
+          }
+
+          if (changeV10 < 0){
+            document.getElementById("change10").style.color = "red";
+          }
+          else {
+            document.getElementById("change10").style.color = "green";
+          }
+
+          document.getElementById("updateTime").innerHTML = json_datas[0].updateTime;
+          document.getElementById("updateTime1").innerHTML = json_datas[1].updateTime;
+          document.getElementById("updateTime2").innerHTML = json_datas[2].updateTime;
+          document.getElementById("updateTime3").innerHTML = json_datas[3].updateTime;
+          document.getElementById("updateTime4").innerHTML = json_datas[4].updateTime;
+          document.getElementById("updateTime5").innerHTML = json_datas[5].updateTime;
+          document.getElementById("updateTime6").innerHTML = json_datas[6].updateTime;
+          document.getElementById("updateTime7").innerHTML = json_datas[7].updateTime;
+          document.getElementById("updateTime8").innerHTML = json_datas[8].updateTime;
+          document.getElementById("updateTime9").innerHTML = json_datas[9].updateTime;
+          document.getElementById("updateTime10").innerHTML = json_datas[10].updateTime;
+
+          
+
+        }
+        else {
+          document.getElementById("result").innerHTML = "";};      
+                            
+          //document.getElementById("result").innerHTML = "tamam";
+        };
+          
+      req.open("GET","/static/json/exchange_values.json", true);
+      req.send();
+            
+      myLoop();
+    }
+
+    
+
+</script>
+
+<title>Exchange Rates</title>
+<div style="margin-top:100px;"></div>
+
+<div class="jumbotron jumbotron-fluid text-light shadow mb-0"style="background-color:#7b9174;">
+    <div class="container">
+        <h1 class="display-4">Real-Time Exchange Rates <i class="bi bi-cash-stack"></i></h1>
+        <p class="lead">View all the exchange rates you want!</p>
+    </div>
+</div>
+<div class="container mt-0">
+<div class="p-2 shadow" style="background-color:#abc2a4;">
+<div class="row ml-3 mr-3 text-light">
+
+    <h1><i class="bi bi-arrow-up"></i> Popular Rates</h1>
+
+</div>
+
+<div id="result"></div>
+
+
+
+<table class="table shadow mb-5 bg-light text-center">
+  <thead class="bg-dark text-light">
+    <tr>
+      <th scope="col"><h4>Exchange Units <i class="bi bi-bank"></i></h4></th>
+      <th scope="col"><h4>Buy Price (TL)</h4></th>
+      <th scope="col"><h4>Sell Price (TL)</h4></th>
+      <th scope="col"><h4>Change Rates <i class="bi bi-arrow-down-up"></i></h4></th>
+      <th scope="col"><h4>Update Time <i class="bi-alarm"></i></h4></th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" id="name" style="border-right:solid #D4D4D4 1px;">-</th>
+      <td id="buyPrice">-</td>
+      <td id="sellPrice">-</td>
+      <td id="change"
+      
+      >-</td>
+      <td id="updateTime" class="text-muted" style="border-left:solid #D4D4D4 1px;">-</td>
+    </tr>
+    <tr>
+      <th scope="row" id="name1" style="border-right:solid #D4D4D4 1px;">-</th>
+      <td id="buyPrice1">-</td>
+      <td id="sellPrice1">-</td>
+      <td id="change1">-</td>
+      <td id="updateTime1" class="text-muted" style="border-left:solid #D4D4D4 1px;">-</td>
+    </tr>
+    <tr>
+      <th scope="row" id="name2" style="border-right:solid #D4D4D4 1px;">-</th>
+      <td id="buyPrice2">-</td>
+      <td id="sellPrice2">-</td>
+      <td id="change2"
+      
+      >-</td>
+      <td id="updateTime2" class="text-muted" style="border-left:solid #D4D4D4 1px;">-</td>
+    </tr>
+    <tr>
+      <th scope="row" id="name3" style="border-right:solid #D4D4D4 1px;">-</th>
+      <td id="buyPrice3">-</td>
+      <td id="sellPrice3">-</td>
+      <td id="change3"
+      
+      >-</td>
+      <td id="updateTime3" class="text-muted" style="border-left:solid #D4D4D4 1px;">-</td>
+    </tr>
+    <tr>
+      <th scope="row" id="name4" style="border-right:solid #D4D4D4 1px;">-</th>
+      <td id="buyPrice4">-</td>
+      <td id="sellPrice4">-</td>
+      <td id="change4"
+      
+      >-</td>
+      <td id="updateTime4" class="text-muted" style="border-left:solid #D4D4D4 1px;">-</td>
+    </tr>
+    <tr>
+      <th scope="row" id="name5" style="border-right:solid #D4D4D4 1px;">-</th>
+      <td id="buyPrice5">-</td>
+      <td id="sellPrice5">-</td>
+      <td id="change5"
+      
+      >-</td>
+      <td id="updateTime5" class="text-muted" style="border-left:solid #D4D4D4 1px;">-</td>
+    </tr>
+    <tr>
+      <th scope="row" id="name6" style="border-right:solid #D4D4D4 1px;">-</th>
+      <td id="buyPrice6">-</td>
+      <td id="sellPrice6">-</td>
+      <td id="change6"
+      
+      >-</td>
+      <td id="updateTime6" class="text-muted" style="border-left:solid #D4D4D4 1px;">-</td>
+    </tr>
+    <tr>
+      <th scope="row" id="name7" style="border-right:solid #D4D4D4 1px;">-</th>
+      <td id="buyPrice7">-</td>
+      <td id="sellPrice7"
+      
+      >-</td>
+      <td id="change7">
+      <td id="updateTime7" class="text-muted" style="border-left:solid #D4D4D4 1px;">-</td>
+    </tr>
+    <tr>
+      <th scope="row" id="name8" style="border-right:solid #D4D4D4 1px;">-</th>
+      <td id="buyPrice8">-</td>
+      <td id="sellPrice8">-</td>
+      <td id="change8"
+      
+      >-</td>
+      <td id="updateTime8" class="text-muted" style="border-left:solid #D4D4D4 1px;">-</td>
+    </tr>
+    <tr>
+      
+      <th scope="row" id="name9" style="border-right:solid #D4D4D4 1px;">-</th>
+      <td id="buyPrice9">-</td>
+      <td id="sellPrice9">-</td>
+      <td id="change9"
+      
+      >-</td>
+      <td id="updateTime9" class="text-muted" style="border-left:solid #D4D4D4 1px;">-</td>
+    </tr>
+    <tr>
+      
+      <th scope="row" id="name10" style="border-right:solid #D4D4D4 1px;">-</th>
+      <td id="buyPrice10">-</td>
+      <td id="sellPrice10">-</td>
+      <td id="change10">-</td>
+      <td id="updateTime10" class="text-muted" style="border-left:solid #D4D4D4 1px;">-</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+
+{% endblock %}

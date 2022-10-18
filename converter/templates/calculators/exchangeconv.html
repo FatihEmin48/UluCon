@@ -1,0 +1,173 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+
+<script>
+    
+    
+
+    function rJson(){
+              
+      var req = new XMLHttpRequest();
+      req.onreadystatechange = function(){
+                  
+            if(this.readyState == 4 && this.status == 200){
+                                    
+                var json_datas = JSON.parse(this.responseText);
+                var countObjects = json_datas.length;
+                
+                
+                input_value = document.getElementById("currencies_value").value;
+                first_value = document.getElementById("currencies").value;
+                second_value = document.getElementById("currencies2").value;
+                
+                if (isNaN(input_value)){
+                    document.getElementById("result").innerHTML = "You have to enter numeric characters. '" + input_value + "' is not a number!";
+                }
+                else if (first_value == second_value){
+                    document.getElementById("result").innerHTML = "The units you want to convert are same. Please select two different units! ";
+                }
+                else if (input_value < 0) {
+                    document.getElementById("result").innerHTML = "Please enter a positive value.";
+                }
+                else if (first_value == 11) {
+                    calculateTL(second_value,input_value);
+                }
+                else if (second_value == 11) {
+                    calculateTL_to(first_value,input_value);
+                }
+                else if (second_value < 0) {
+                    document.getElementById("result").innerHTML = "Please enter a positive value.";
+                }
+                else {
+                    calculate(first_value,second_value,input_value);
+                };    
+
+                function calculateTL(second_value,input_value){
+                    unit = json_datas[second_value].buyPrice;
+                    result = input_value / unit;
+                    result = result.toFixed(2);
+                    document.getElementById("result").innerHTML = input_value + " TL" + " = " + result + " " + json_datas[second_value].name;   
+
+                }
+
+                function calculateTL_to(first_value,input_value){
+                    unit = json_datas[first_value].buyPrice;
+                    result = input_value * unit;
+                    result = result.toFixed(2);
+                    document.getElementById("result").innerHTML = (input_value+" "+json_datas[first_value].name+" = "+result+" TL-Turkish Lira");   
+
+                }
+
+                function calculate(first_value,second_value,input_value){
+                    unit1 = json_datas[first_value].buyPrice;
+                    unit2 = json_datas[second_value].buyPrice;
+                    
+                    result = (input_value * unit1) / unit2;
+                    result = result.toFixed(2);
+                    document.getElementById("result").innerHTML = (input_value+" "+json_datas[first_value].name+" = "+result+" "+json_datas[second_value].name);   
+                };
+
+                
+
+            }
+            else{document.getElementById("result").innerHTML = "";}      
+                                
+            //document.getElementById("result").innerHTML = "tamam";
+        };
+          
+      req.open("GET","/static/json/exchange_values.json", true);
+      req.send();
+          
+    };
+
+
+
+
+    
+</script>
+
+
+
+<title>Currency Converter</title>
+<div style="margin-top:100px;"></div>
+
+<div class="jumbotron jumbotron-fluid text-light mb-0" style="background-color:#50af64">
+    <div class="container">
+        <h1 class="display-4">The Exchange Unit Converter <i class="bi bi-currency-exchange"></i> is on your service! </h1>
+        <p class="lead">You can choose any of the offered units and convert to each other of the same type you want.</p>
+    </div>
+</div>
+
+
+
+
+<div class="container">
+
+
+    <div class="jumbotron jumbotron-fluid rounded" style="border: solid 1px black;">
+        
+        
+        <div id="cevirForm">	
+                <div class="input-group input-group-lg w-75 m-auto">
+                    
+                    <div class="input-group-prepend">
+                        <select id="currencies">
+                            <option value="0">USD-American Dollar</option>
+                            <option value="1">EUR-Euro</option>
+                            <option value="2">GBP-Pound</option>
+                            <option value="3">CAD-Canadian Dollar</option>
+                            <option value="4">CHF-Swiss Frank</option>
+                            <option value="5">SAR-Saudi Arabian Rial</option>
+                            <option value="6">JPY-Japanese Yen 	</option>
+                            <option value="7">AUD-Australian Dollar</option>
+                            <option value="8">NOK-Norwegian Crown</option>
+                            <option value="9">DKK-Danish Crown</option>
+                            <option value="10">SEK-Swedish Crown</option>
+                            <option value="11">TL-Turkish Lira</option>
+                        </select>
+                    </div>
+
+                        <input type="text" id="currencies_value" class="form-control isvalid" aria-label="Large" aria-describedby="inputGroup-sizing-sm" required>
+                    
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="inputGroup-sizing-lg">to :</span>
+                    
+                        <div class="input-group-append">
+                            <select id="currencies2">
+                                <option value="0">USD-American Dollar</option>
+                                <option value="1">EUR-Euro</option>
+                                <option value="2">GBP-Pound</option>
+                                <option value="3">CAD-Canadian Dollar</option>
+                                <option value="4">CHF-Swiss Frank</option>
+                                <option value="5">SAR-Saudi Arabian Rial</option>
+                                <option value="6">JPY-Japanese Yen 	</option>
+                                <option value="7">AUD-Australian Dollar</option>
+                                <option value="8">NOK-Norwegian Crown</option>
+                                <option value="9">DKK-Danish Crown</option>
+                                <option value="10">SEK-Swedish Crown</option>
+                                <option value="11">TL-Turkish Lira</option>
+                            </select>	
+                        </div>
+                        <div class="input-group-append">
+                            <input type="button" id="inputGroup-sizing-lg" onclick="rJson()" value="Convert!">
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5 ">
+           <div class="w-50 m-auto text-center">
+                <h3 id="result"></h3>
+           </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}
